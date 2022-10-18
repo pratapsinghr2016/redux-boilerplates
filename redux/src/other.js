@@ -40,10 +40,6 @@ const store = configureStore({
 });
 // const store = createStore(rootReducer, initialState);
 
-store.subscribe(() => {
-  console.log("====>", store.getState());
-});
-
 const increaseAction = function (payload) {
   return { type: "INC", payload };
 };
@@ -54,12 +50,12 @@ const decreaseAction = function (payload) {
 
 store.dispatch(increaseAction(1));
 store.dispatch(increaseAction(1));
-store.dispatch(increaseAction(1));
-store.dispatch(increaseAction(1));
-//
 store.dispatch(decreaseAction(1));
 store.dispatch(decreaseAction(1));
-store.dispatch(decreaseAction(1));
+
+store.subscribe(() => {
+  console.log("====>", store.getState());
+});
 
 export function doSomething() {
   return "";
